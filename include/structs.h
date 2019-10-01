@@ -78,6 +78,8 @@ typedef struct {
 /* 0xC */ unsigned int inst4;
 } __osExceptionVector;
 
+typedef unsigned long(*func)(void);
+
 typedef void(*func_ptr)(void);
 
 typedef void(*osCreateThread_func)(void*);
@@ -596,8 +598,6 @@ typedef struct {
 
 typedef void(*light_map_directional_func)(z_LightMapper* mapper, void* params, z_Vector3f* pos);
 
-typedef void(*light_map_positional_func)(z_LightMapper* mapper, void* params);
-
 typedef struct {
 /* 0x00 */ z_Vector3f unk0;
 /* 0x0C */ z_Vector3f unkC;
@@ -877,6 +877,8 @@ typedef struct {
 /* 0xC */ z_ColTriInit* elemInit;
 } z_ColTriGroupInit;
 
+typedef struct s801BB170 s801BB170;
+
 typedef struct z_ActorBgMbarChair z_ActorBgMbarChair;
 
 typedef struct z_ActorEnBji01 z_ActorEnBji01;
@@ -1023,7 +1025,23 @@ typedef void(*cutscene_update_func)(z_GlobalContext* ctxt, z_CutsceneContext* cC
 
 typedef void(*global_context_func)(z_GlobalContext*);
 
+typedef void(*light_map_positional_func)(z_LightMapper* mapper, void* params, z_GlobalContext* ctxt);
+
 typedef void(*scene_header_func)(z_GlobalContext* ctxt, z_SceneHeaderEntry* entry);
+
+typedef void(*z_draw_func)(z_GlobalContext* ctxt, s16 index);
+
+struct s801BB170 {
+/* 0x00 */ z_draw_func unk0;
+/* 0x04 */ u32 unk4;
+/* 0x08 */ u32 unk8;
+/* 0x0C */ u32 unkC;
+/* 0x10 */ u32 unk10;
+/* 0x14 */ u32 unk14;
+/* 0x18 */ u32 unk18;
+/* 0x1C */ u32 unk1C;
+/* 0x20 */ u32 unk20;
+};
 
 typedef struct z_Heap z_Heap;
 
@@ -1063,7 +1081,9 @@ typedef struct {
 /* 0x4 */ u8 ambientRed;
 /* 0x5 */ u8 ambientGreen;
 /* 0x6 */ u8 ambientBlue;
-/* 0x7 */ UNK_TYPE1 pad7[3];
+/* 0x7 */ u8 unk7;
+/* 0x8 */ u8 unk8;
+/* 0x9 */ u8 unk9;
 /* 0xA */ s16 unkA;
 /* 0xC */ s16 unkC;
 } z_LightingContext;
@@ -1509,7 +1529,6 @@ struct z_GlobalContext {
 /* 0x00220 */ z_GlobalContext220 unk220[4];
 /* 0x00800 */ UNK_TYPE1 pad800[24];
 /* 0x00818 */ z_LightingContext lightsContext;
-/* 0x00826 */ UNK_TYPE1 pad826[2];
 /* 0x00828 */ u32 unk828;
 /* 0x0082C */ UNK_TYPE1 pad82C[5236];
 /* 0x01CA0 */ z_ActorContext actorContext;
@@ -1525,7 +1544,7 @@ struct z_GlobalContext {
 /* 0x17000 */ u16 unk17000;
 /* 0x17002 */ UNK_TYPE1 pad17002[2];
 /* 0x17004 */ z_KankyoContext kankyoContext;
-/* 0x170F6 */ UNK_TYPE1 pad170F6[3218];
+/* 0x170F8 */ UNK_TYPE1 pad170F8[3216];
 /* 0x17D88 */ z_SceneContext sceneContext;
 /* 0x186E0 */ s8 currentRoom;
 /* 0x186E1 */ UNK_TYPE1 pad186E1[5];

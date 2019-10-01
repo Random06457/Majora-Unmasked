@@ -6,6 +6,8 @@
     0x00ACC000:("","UNK_TYPE",False), # this seems low
     0x00B3C000:("","UNK_TYPE",False), # this seems low
     0x00C7A4E0:("","UNK_TYPE",False), # this seems low
+    0x04029CB0:("","UNK_TYPE",False), # this seems low
+    0x04029CF0:("","UNK_TYPE",False), # this seems low
     0x060005D0:("","UNK_TYPE",False), # this seems low
     0x06001100:("","UNK_TYPE",False), # this seems low
     0x06001228:("","UNK_TYPE",False), # this seems low
@@ -157,6 +159,8 @@
     0x801B4610:("","UNK_TYPE",False),
     0x801B9F20:("","s800E03A0",False), # actually an array of size 23?
     0x801BDB30:("","u8",True),
+    0x801BEAB0:("lightPositionalMapFuncs","light_map_positional_func",True),
+    0x801BEABC:("lightPositionalMapFuncs","light_map_directional_func",True),
     0x801C2078:("D_801C2078","u8",True),
     0x801C2079:("D_801C2079","u8",False),
     0x801C207E:("D_801C207E","u8",False),
@@ -193,12 +197,15 @@
     0x801DCBFC:("","UNK_TYPE",False),
     0x801DDA80:("","f32",False),
     0x801DDA84:("","f32",False),
+    0x801DDAB0:("D_801DDAB0","f32",False),
+    0x801DDAB4:("D_801DDAB4","f32",False),
     0x801E3FA0:("","UNK_TYPE",False),
     0x801ED930:("","UNK_TYPE",False),
     0x801ED940:("","UNK_TYPE",False),
     0x801EF670:("D_801EF670","u8",False), # save info/link struct?
     0x801EF677:("D_801EF677","u8",False), # part of save info/link struct?
     0x801F3F60:("staticContext","z_StaticContext*",False),
+    0x801F4F70:("lightsList","z_LightsList*",False),
     0x801F8160:("D_801F8160","OSMesgQueue",False),
     0x801F8178:("D_801F8178","OSMesg",True),
     0x801F8180:("D_801F8180","UNK_TYPE",True),

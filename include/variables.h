@@ -475,6 +475,8 @@ extern UNK_TYPE D_00C7A4E0; // D_00C7A4E0
 //extern UNK_TYPE D_01EFE000;
 //extern UNK_TYPE D_01F0A000;
 //extern UNK_TYPE D_01F0A200;
+extern UNK_TYPE D_04029CB0; // D_04029CB0
+extern UNK_TYPE D_04029CF0; // D_04029CF0
 extern UNK_TYPE D_060005D0; // D_060005D0
 extern UNK_TYPE D_06001100; // D_06001100
 extern UNK_TYPE D_06001228; // D_06001228
@@ -1546,7 +1548,8 @@ extern u8 D_801BDB30[]; // D_801BDB30
 //extern UNK_TYPE D_801BEA1E;
 //extern UNK_TYPE D_801BEA30;
 //extern UNK_TYPE D_801BEA70;
-//extern UNK_TYPE D_801BEAB0;
+extern light_map_positional_func lightPositionalMapFuncs[];
+extern light_map_directional_func lightDirectionalMapFuncs[];
 //extern UNK_TYPE D_801BEAD4;
 //extern UNK_TYPE D_801BEAD8;
 //extern UNK_TYPE D_801BEAE0;
@@ -3709,8 +3712,8 @@ extern f32 D_801DDA84; // D_801DDA84
 //extern UNK_TYPE D_801DDA94;
 //extern UNK_TYPE D_801DDA98;
 //extern UNK_TYPE D_801DDA9C;
-//extern UNK_TYPE D_801DDAB0;
-//extern UNK_TYPE D_801DDAB4;
+extern f32 D_801DDAB0;
+extern f32 D_801DDAB4;
 //extern UNK_TYPE D_801DDAB8;
 //extern UNK_TYPE D_801DDAC0;
 //extern UNK_TYPE D_801DDAC4;
@@ -4761,7 +4764,7 @@ extern z_StaticContext* staticContext; // D_801F3F60
 //extern UNK_TYPE D_801F4F60;
 //extern UNK_TYPE D_801F4F66;
 //extern UNK_TYPE D_801F4F6A;
-//extern UNK_TYPE D_801F4F70;
+extern z_LightsList lightsList;
 //extern UNK_TYPE D_801F4F78;
 //extern UNK_TYPE D_801F5100;
 //extern UNK_TYPE D_801F5130;

@@ -679,7 +679,7 @@ UNK_RET func_800B42F8(UNK_ARGS); // func_800B42F8
 UNK_RET func_800B4A98(UNK_ARGS); // func_800B4A98
 UNK_RET func_800B4AEC(UNK_ARGS); // func_800B4AEC
 UNK_RET func_800B4B50(UNK_ARGS); // func_800B4B50
-UNK_RET func_800B4EDC(UNK_ARGS); // func_800B4EDC
+void func_800B4EDC(z_GlobalContext * ctxt, z_Vector3f * pzParm2, z_Vector3f * pzParm3, f32 * pfParm4); // func_800B4EDC
 UNK_RET func_800B4F40(UNK_ARGS); // func_800B4F40
 UNK_RET func_800B4F78(UNK_ARGS); // func_800B4F78
 UNK_RET func_800B5040(UNK_ARGS); // func_800B5040
@@ -1873,33 +1873,33 @@ UNK_RET func_80100AF0(UNK_ARGS); // func_80100AF0
 UNK_RET func_80100B8C(UNK_ARGS); // func_80100B8C
 UNK_RET func_80101844(UNK_ARGS); // func_80101844
 UNK_RET func_80101930(UNK_ARGS); // func_80101930
-UNK_RET Lights_InitPositionalLight(UNK_ARGS); // func_801019A0
-UNK_RET Lights_InitType0PositionalLight(UNK_ARGS); // func_801019FC
-UNK_RET Lights_InitType2PositionalLight(UNK_ARGS); // func_80101A60
-UNK_RET Lights_SetPositionalLightColorAndRadius(UNK_ARGS); // func_80101AC8
-UNK_RET Lights_SetPositionalLightPosition(UNK_ARGS); // func_80101AFC
-UNK_RET Lights_InitDirectional(UNK_ARGS); // func_80101B34
-UNK_RET Lights_MapperInit(UNK_ARGS); // func_80101B8C
-UNK_RET Lights_UploadLights(UNK_TYPE, z_GraphicsContext*); // func_80101BC8
-UNK_RET Lights_MapperGetNextFreeSlot(UNK_ARGS); // func_80101D0C
-UNK_RET Lights_MapPositionalWithReference(UNK_ARGS); // func_80101D3C
-UNK_RET Lights_MapPositional(UNK_ARGS); // func_801020A0
-UNK_RET Lights_MapDirectional(UNK_ARGS); // func_80102284
-UNK_RET Lights_MapLights(UNK_TYPE, z_Light*, UNK_TYPE, z_GlobalContext*); // func_801022F0
-UNK_RET Lights_FindFreeSlot(UNK_ARGS); // func_801023D8
-UNK_RET Lights_Free(UNK_ARGS); // func_80102464
-UNK_RET Lights_Init(UNK_ARGS); // func_801024AC
-UNK_RET Lights_SetAmbientColor(UNK_ARGS); // func_80102518
-UNK_RET func_80102544(UNK_ARGS); // func_80102544
-UNK_TYPE Lights_CreateMapper(z_LightingContext*, z_GraphicsContext*); // func_80102580
-UNK_RET Lights_ClearHead(UNK_ARGS); // func_801025B8
-UNK_RET Lights_RemoveAll(UNK_ARGS); // func_801025C8
-UNK_RET Lights_Insert(UNK_ARGS); // func_80102624
-UNK_RET Lights_Remove(UNK_ARGS); // func_80102684
-UNK_RET func_801026E8(UNK_ARGS); // func_801026E8
-UNK_RET Lights_MapperAllocateAndInit(UNK_ARGS); // func_80102834
-UNK_RET func_80102880(UNK_ARGS); // func_80102880
-UNK_RET func_80102A64(UNK_ARGS); // func_80102A64
+void Lights_InitPositionalLight(z_LightInfoPositional* info, s16 posX, s16 posY, s16 posZ, u8 red, u8 green, u8 blue, s16 radius, u32 type); // func_0x801019A0
+void Lights_InitType0PositionalLight(z_LightInfoPositional* info, s16 posX, s16 posY, s16 posZ, u8 red, u8 green, u8 blue, s16 radius); // func_0x801019FC
+void Lights_InitType2PositionalLight(z_LightInfoPositional* info, s16 posX, s16 posY, s16 posZ, u8 red, u8 green, u8 blue, s16 radius); // func_0x80101A60
+void Lights_SetPositionalLightColorAndRadius(z_LightInfoPositional* info, u8 red, u8 green, u8 blue, s16 radius); // func_0x80101AC8
+void Lights_SetPositionalLightPosition(z_LightInfoPositional* info, s16 posX, s16 posY, s16 posZ); // func_0x80101AFC
+void Lights_InitDirectional(z_LightInfoDirectional* info, s8 dirX, s8 dirY, s8 dirZ, u8 red, u8 green, u8 blue); // func_0x80101B34
+void Lights_MapperInit(z_LightMapper* mapper, u8 red, u8 green, u8 blue); // func_0x80101B8C
+void Lights_UploadLights(z_LightMapper* mapper, z_GraphicsContext* gCtxt); // func_0x80101BC8
+Light* Lights_MapperGetNextFreeSlot(z_LightMapper* mapper); // func_0x80101D0C
+void Lights_MapPositionalWithReference(z_LightMapper* mapper, z_LightInfoPositionalParams* params, z_Vector3f* pos); // func_0x80101D3C
+void Lights_MapPositional(z_LightMapper* mapper, z_LightInfoPositionalParams* params, z_GlobalContext* ctxt); // func_0x801020A0
+void Lights_MapDirectional(z_LightMapper* mapper, z_LightInfoDirectionalParams* params, z_GlobalContext* ctxt); // func_0x80102284
+void Lights_MapLights(z_LightMapper* mapper, z_Light* lights, z_Vector3f* refPos, z_GlobalContext* ctxt); // func_0x801022F0
+z_Light* Lights_FindFreeSlot(void); // func_0x801023D8
+void Lights_Free(z_Light* light); // func_0x80102464
+void Lights_Init(z_GlobalContext* ctxt, z_LightingContext* lCtxt); // func_0x801024AC
+void Lights_SetAmbientColor(z_LightingContext* lCtxt, u8 red, u8 green, u8 blue); // func_0x80102518
+void func_80102544(z_LightingContext* lCtxt, u8 a1, u8 a2, u8 a3, s16 sp12, s16 sp16); // func_0x80102544
+z_LightMapper* Lights_CreateMapper(z_LightingContext* lCtxt, z_GraphicsContext* gCtxt); // func_0x80102580
+void Lights_ClearHead(z_GlobalContext* ctxt, z_LightingContext* lCtxt); // func_0x801025B8
+void Lights_RemoveAll(z_GlobalContext* ctxt, z_LightingContext* lCtxt); // func_0x801025C8
+z_Light* Lights_Insert(z_GlobalContext* ctxt, z_LightingContext* lCtxt, z_LightInfo* info); // func_0x80102624
+void Lights_Remove(z_GlobalContext* ctxt, z_LightingContext* lCtxt, z_Light* light); // func_0x80102684
+z_LightMapper* func_801026E8(z_GraphicsContext* gCtxt, u8 ambientRed, u8 ambientGreen, u8 ambientBlue, u8 numLights, u8 red, u8 green, u8 blue, s8 dirX, s8 dirY, s8 dirZ); // func_0x801026E8
+z_LightMapper* Lights_MapperAllocateAndInit(z_GraphicsContext* gCtxt, u8 red, u8 green, u8 blue); // func_0x80102834
+void func_80102880(z_GlobalContext* ctxt); // func_0x80102880
+void func_80102A64(z_GlobalContext* ctxt); // func_0x80102A64
 UNK_RET zelda_malloc(UNK_ARGS); // func_80102C60
 void* zelda_mallocR(u32); // func_80102C88
 UNK_RET zelda_realloc(UNK_ARGS); // func_80102CB0
@@ -2352,7 +2352,7 @@ UNK_RET func_8012C680(UNK_ARGS); // func_8012C680
 UNK_RET func_8012C6AC(UNK_ARGS); // func_8012C6AC
 UNK_RET func_8012C6FC(UNK_ARGS); // func_8012C6FC
 u32* func_8012C724(u32*); // func_8012C724
-UNK_RET func_8012C7FC(UNK_ARGS); // func_8012C7FC
+Gfx* func_8012C7FC(Gfx*); // func_8012C7FC
 UNK_RET func_8012C868(UNK_ARGS); // func_8012C868
 UNK_RET func_8012C8AC(UNK_ARGS); // func_8012C8AC
 UNK_RET func_8012C8D4(UNK_ARGS); // func_8012C8D4
@@ -2606,7 +2606,7 @@ UNK_RET func_80138700(UNK_ARGS); // func_80138700
 UNK_RET func_801387D4(UNK_ARGS); // func_801387D4
 UNK_RET func_801388E4(UNK_ARGS); // func_801388E4
 UNK_RET Matrix_MultiplyByVectorXYZW(UNK_ARGS); // func_80138BA0
-UNK_RET Matrix_MultiplyByVectorXYZ(UNK_PTR, UNK_PTR, UNK_PTR); // func_80138C88
+void Matrix_MultiplyByVectorXYZ(z_Matrix* matrix, z_Vector3f* vector, z_Vector3f* result); // func_80138C88
 UNK_RET Matrix_Multiply(UNK_ARGS); // func_80138D38
 UNK_RET Matrix_GetIdentity(UNK_ARGS); // func_80139094
 UNK_RET Matrix_MakeIdentity(UNK_ARGS); // func_801390A8
@@ -3209,7 +3209,7 @@ UNK_RET func_801789EC(UNK_ARGS); // func_801789EC
 UNK_RET func_80178A14(UNK_ARGS); // func_80178A14
 UNK_RET func_80178A24(UNK_ARGS); // func_80178A24
 UNK_RET func_80178A34(UNK_ARGS); // func_80178A34
-UNK_RET func_80178A94(UNK_ARGS); // func_80178A94
+s32 func_80178A94(s32 param_1, s32 param_2); // func_80178A94
 UNK_RET func_80178AC0(UNK_ARGS); // func_80178AC0
 UNK_RET func_80178C80(UNK_ARGS); // func_80178C80
 UNK_RET func_80178D7C(UNK_ARGS); // func_80178D7C
@@ -3337,8 +3337,8 @@ UNK_RET SysMatrix_CopyCurrentState(UNK_ARGS); // func_801801E8
 UNK_RET SysMatrix_SetCurrentState(UNK_ARGS); // func_8018020C
 UNK_RET SysMatrix_GetCurrentState(UNK_ARGS); // func_80180234
 UNK_RET SysMatrix_InsertMatrix(UNK_ARGS); // func_80180244
-UNK_RET SysMatrix_InsertTranslation(UNK_ARGS); // func_8018029C
-UNK_RET SysMatrix_InsertScale(f32, f32, f32, UNK_TYPE); // func_8018039C
+void SysMatrix_InsertTranslation(f32, f32, f32, u32); // func_8018029C
+void SysMatrix_InsertScale(f32, f32, f32, u32); // func_8018039C
 UNK_RET SysMatrix_InsertXRotation_s(UNK_ARGS); // func_80180478
 UNK_RET SysMatrix_InsertXRotation_f(UNK_ARGS); // func_80180610
 UNK_RET SysMatrix_RotateStateAroundXAxis(UNK_ARGS); // func_801807B8
@@ -3352,7 +3352,7 @@ UNK_RET SysMatrix_RotateAndTranslateState(UNK_ARGS); // func_801812FC
 UNK_RET SysMatrix_SetStateRotationAndTranslation(UNK_ARGS); // func_80181650
 UNK_RET SysMatrix_ToRSPMatrix(UNK_ARGS); // func_801817FC
 UNK_RET SysMatrix_GetStateAsRSPMatrix(UNK_ARGS); // func_80181A18
-UNK_TYPE SysMatrix_AppendStateToPolyOpaDisp(z_GraphicsContext*); // func_80181A40
+z_RSPMatrix* SysMatrix_AppendStateToPolyOpaDisp(z_GraphicsContext*); // func_80181A40
 UNK_RET SysMatrix_AppendToPolyOpaDisp(UNK_ARGS); // func_80181A6C
 UNK_RET SysMatrix_MultiplyVector3fByState(UNK_ARGS); // func_80181A98
 UNK_RET SysMatrix_GetStateTranslation(UNK_ARGS); // func_80181B50
